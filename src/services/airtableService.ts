@@ -106,3 +106,29 @@ export const getVAMethods = async () => {
     return [];
   }
 };
+
+export const getEvents = async () => {
+  try {
+    const response = await airtable.get("/EventList");
+    return response.data.records.map((record: any) => ({
+      id: record.id,
+      ...record.fields
+    }));
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
+};
+
+export const getNews = async () => {
+  try {
+    const response = await airtable.get("/NewsList");
+    return response.data.records.map((record: any) => ({
+      id: record.id,
+      ...record.fields
+    }));
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return [];
+  }
+};

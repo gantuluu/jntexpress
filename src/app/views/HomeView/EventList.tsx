@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { getEvents, getNews } from '../../../services/airtableService';
 
 export const EventList = () => {
-  const events = [
-    {
-      title: "Promo J&T Super",
-      image: "https://picsum.photos/seed/jnt1/400/200",
-      description: "Dapatkan diskon hingga 50% untuk pengiriman antar kota."
-    },
-    {
-      title: "J&T Express Anniversary",
-      image: "https://picsum.photos/seed/jnt2/400/200",
-      description: "Rayakan bersama kami dan menangkan hadiah menarik."
-    }
-  ];
+  const [events, setEvents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const data = await getEvents();
+      setEvents(data);
+      setLoading(false);
+    };
+    fetchEvents();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="py-4 px-4">
+        <div className="h-40 bg-gray-100 animate-pulse rounded-2xl"></div>
+      </div>
+    );
+  }
+
+  if (events.length === 0) return null;
 
   return (
     <div className="py-4">
@@ -40,18 +50,28 @@ export const EventList = () => {
 };
 
 export const NewsList = () => {
-  const news = [
-    {
-      title: "Layanan Baru: J&T Cargo Kini Hadir",
-      image: "https://picsum.photos/seed/news1/100/100",
-      date: "2024-03-01"
-    },
-    {
-      title: "Tips Packing Aman untuk Barang Pecah Belah",
-      image: "https://picsum.photos/seed/news2/100/100",
-      date: "2024-02-28"
-    }
-  ];
+  const [news, setNews] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const data = await getNews();
+      setNews(data);
+      setLoading(false);
+    };
+    fetchNews();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="py-4 px-4 space-y-4">
+        <div className="h-24 bg-gray-100 animate-pulse rounded-2xl"></div>
+        <div className="h-24 bg-gray-100 animate-pulse rounded-2xl"></div>
+      </div>
+    );
+  }
+
+  if (news.length === 0) return null;
 
   return (
     <div className="py-4">
