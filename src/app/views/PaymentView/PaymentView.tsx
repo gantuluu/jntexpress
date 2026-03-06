@@ -100,7 +100,7 @@ export const PaymentView = () => {
       <div className="app-container flex flex-col bg-white">
         {/* Header */}
         <div className="bg-jnt-red text-white sticky top-0 z-20 shadow-md">
-          <div className="px-4 py-4 flex items-center gap-4">
+          <div className="px-4 sm:px-6 py-4 flex items-center gap-4">
             <button onClick={() => navigate(-1)} className="p-1 hover:bg-white/10 rounded-full transition-colors">
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -111,7 +111,7 @@ export const PaymentView = () => {
           </div>
         </div>
 
-        <div className="flex-1 p-4 space-y-4 overflow-y-auto">
+        <div className="flex-1 p-4 sm:p-6 space-y-4 overflow-y-auto">
           {/* Countdown Timer */}
           <Card className="bg-orange-50 border-orange-100 p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">

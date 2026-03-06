@@ -125,7 +125,7 @@ export const TrackingPage = () => {
       <div className="app-container flex flex-col bg-white">
         {/* Header */}
         <div className="bg-jnt-red text-white sticky top-0 z-20 shadow-md">
-          <div className="px-4 py-4 flex items-center gap-4">
+          <div className="px-4 sm:px-6 py-4 flex items-center gap-4">
             <button onClick={() => navigate('/')} className="p-1 hover:bg-white/10 rounded-full transition-colors">
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -137,7 +137,7 @@ export const TrackingPage = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="p-4 bg-jnt-red pb-8 rounded-b-3xl">
+        <div className="p-4 sm:p-6 bg-jnt-red pb-8 rounded-b-3xl">
           <form onSubmit={handleSearch} className="relative">
             <input
               type="text"
@@ -155,7 +155,7 @@ export const TrackingPage = () => {
           </form>
         </div>
 
-        <div className="flex-1 -mt-4 px-4 pb-10 space-y-4 overflow-y-auto">
+        <div className="flex-1 -mt-4 px-4 sm:px-6 pb-10 space-y-4 overflow-y-auto">
           {loading ? (
             <div className="py-20 flex flex-col items-center justify-center space-y-4">
               <Loader />
@@ -267,7 +267,7 @@ export const TrackingPage = () => {
                 const destination = titikTujuan.split(',').map(Number) as [number, number];
 
                 return (
-                  <Card className="overflow-hidden border-0 shadow-md h-[200px] relative z-0 p-0 -mx-3">
+                  <Card className="overflow-hidden border-0 shadow-md h-[200px] relative z-0 p-0 -mx-4 sm:-mx-6">
                     <MapContainer 
                       center={origin} 
                       zoom={5} 
