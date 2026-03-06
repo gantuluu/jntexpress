@@ -21,23 +21,31 @@ export default function App() {
     };
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
   }, []);
 
+  const handleEnterApp = () => {
+    setShowSplash(false);
+  };
+
   return (
-    <BrowserRouter>
-      {showSplash && <SplashscreenView onOpen={() => setShowSplash(false)} />}
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/order" element={<OrderView />} />
-          <Route path="/scan" element={<ScanView />} />
-          <Route path="/outlet" element={<OutletView />} />
-          <Route path="/profile" element={<ProfileView />} />
-        </Route>
-        <Route path="/tracking/:resi" element={<TrackingPage />} />
-        <Route path="/payment" element={<PaymentView />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      {showSplash && <SplashscreenView onEnter={handleEnterApp} />}
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomeView />} />
+            <Route path="/order" element={<OrderView />} />
+            <Route path="/scan" element={<ScanView />} />
+            <Route path="/outlet" element={<OutletView />} />
+            <Route path="/profile" element={<ProfileView />} />
+          </Route>
+          <Route path="/tracking/:resi" element={<TrackingPage />} />
+          <Route path="/payment" element={<PaymentView />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
