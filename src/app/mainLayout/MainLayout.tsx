@@ -10,7 +10,7 @@ export const MainLayout = () => {
     <div className="app-container flex flex-col">
       <Header toggleSidebar={() => setSidebarOpen(true)} />
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 pb-20 overflow-y-auto">
+      <main className="flex-1 pb-20 overflow-y-auto flex flex-col">
         <Outlet />
       </main>
       <BottomNav />

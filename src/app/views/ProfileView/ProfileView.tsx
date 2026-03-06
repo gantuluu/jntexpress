@@ -8,7 +8,7 @@ export const ProfileView = () => {
 
   if (!isLoggedIn) {
     return (
-      <div className="p-6 min-h-[80vh] flex flex-col justify-center">
+      <div className="p-6 flex-1 flex flex-col justify-center">
         <div className="text-center mb-8">
           <div className="w-20 h-20 bg-jnt-red text-white rounded-3xl flex items-center justify-center mx-auto mb-4 rotate-12 shadow-xl">
             <User className="w-10 h-10" />
@@ -53,7 +53,7 @@ export const ProfileView = () => {
   ];
 
   return (
-    <div className="animate-in slide-in-from-bottom-4 duration-500">
+    <div className="flex-1 animate-in slide-in-from-bottom-4 duration-500">
       <div className="bg-jnt-red pt-12 pb-20 px-6 rounded-b-[40px] relative">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">

@@ -42,7 +42,7 @@ export const ScanView = () => {
   };
 
   return (
-    <div className="p-4 flex flex-col items-center justify-center min-h-[70vh]">
+    <div className="p-4 flex flex-col items-center justify-center flex-1">
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-jnt-red/10 text-jnt-red rounded-full flex items-center justify-center mx-auto mb-4">
           <ScanIcon className="w-8 h-8" />

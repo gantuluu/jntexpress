@@ -96,8 +96,8 @@ export const PaymentView = () => {
   if (!va || !amount) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center">
-      <div className="w-full max-w-[500px] bg-white shadow-xl min-h-screen relative flex flex-col">
+    <div className="h-full bg-gray-50 flex justify-center">
+      <div className="app-container flex flex-col bg-white">
         {/* Header */}
         <div className="bg-jnt-red text-white sticky top-0 z-20 shadow-md">
           <div className="px-4 py-4 flex items-center gap-4">
@@ -111,7 +111,7 @@ export const PaymentView = () => {
           </div>
         </div>
 
-        <div className="flex-1 p-4 space-y-4">
+        <div className="flex-1 p-4 space-y-4 overflow-y-auto">
           {/* Countdown Timer */}
           <Card className="bg-orange-50 border-orange-100 p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -282,16 +282,6 @@ export const PaymentView = () => {
           >
             Cek Status Pembayaran
           </button>
-        </div>
-
-        {/* Logo Footer */}
-        <div className="py-8 flex flex-col items-center opacity-40 grayscale hover:grayscale-0 transition-all pointer-events-none">
-          <img 
-            src="https://uploads.onecompiler.io/43y3uz32c/44aggzewf/J&T_Express_logo.svg.png" 
-            alt="Logo J&T Express" 
-            className="h-10 object-contain mb-1"
-          />
-          <p className="text-[8px] font-bold uppercase tracking-[0.3em]">Express Your Online Business</p>
         </div>
       </div>
     </div>

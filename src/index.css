@@ -12,9 +12,13 @@
   background-color: #f9fafb; /* gray-50 */
 }
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,7 +31,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
   background-color: #f9fafb;
-  min-height: 100vh;
+  height: 100%;
   position: relative;
   box-shadow: 0 0 40px rgba(0,0,0,0.03);
 }

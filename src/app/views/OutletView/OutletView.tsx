@@ -31,7 +31,7 @@ export const OutletView = () => {
   ];
 
   return (
-    <div className="p-4 space-y-6">
+    <div className="p-4 space-y-6 flex-1">
       <div className="space-y-2">
         <h2 className="text-2xl font-black italic">CARI OUTLET</h2>
         <Input placeholder="Cari kota atau nama outlet..." />

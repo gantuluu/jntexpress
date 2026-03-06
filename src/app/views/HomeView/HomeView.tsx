@@ -6,7 +6,7 @@ import { EventList, NewsList } from './EventList';
 
 export const HomeView = () => {
   return (
-    <div className="animate-in fade-in duration-700">
+    <div className="flex-1 animate-in fade-in duration-700">
       <div className="relative">
         <AutoSliderBanner />
         <div className="relative -mt-10 z-10">
