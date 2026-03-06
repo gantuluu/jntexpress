@@ -1,0 +1,7 @@
+{
+  "name": "Remix: J\u0026T Express Clone",
+  "description": "A mobile-first tracking page inspired by J\u0026T Express UI, optimized for 500px width.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
