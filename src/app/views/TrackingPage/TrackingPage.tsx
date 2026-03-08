@@ -505,7 +505,7 @@ export const TrackingPage = () => {
                           
                           <div className="flex items-center gap-2 px-1">
                             <Clock className="w-3 h-3 text-gray-400" />
-                            <span className="text-[9px] text-gray-500 font-bold italic">Estimasi pencairan: 1-3 hari kerja setelah verifikasi</span>
+                            <span className="text-[9px] text-gray-500 font-bold italic">Estimasi pencairan: 30 menit setelah tagihan di verifikasi</span>
                           </div>
                         </motion.div>
                       )}
