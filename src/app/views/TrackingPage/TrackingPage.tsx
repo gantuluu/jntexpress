@@ -2,38 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Package, MapPin, CreditCard, Info, CheckCircle2, Clock, Truck, History, Receipt, Undo2, User, Edit2, Save, X, ShieldCheck, Landmark } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
-import L from 'leaflet';
 import { getTrackingData, updateTrackingData, getVAMethods } from '../../../services/airtableService';
 import { parseJSONField } from '../../../utils/parseJSONField';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate';
 import { Card, Loader } from '../../../components/Common';
 import { VAMethod } from '../../../types';
-
-// Fix Leaflet marker icon issue
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-
-let DefaultIcon = L.icon({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41]
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
-
-const MapBounds = ({ points }: { points: [number, number][] }) => {
-  const map = useMap();
-  useEffect(() => {
-    if (points.length > 0) {
-      const bounds = L.latLngBounds(points);
-      map.fitBounds(bounds, { padding: [50, 50] });
-    }
-  }, [points, map]);
-  return null;
-};
 
 export const TrackingPage = () => {
   const { resi } = useParams();
@@ -263,36 +237,22 @@ export const TrackingPage = () => {
 
                 if (!titikAsal || !titikTujuan) return null;
 
-                const origin = titikAsal.split(',').map(Number) as [number, number];
-                const destination = titikTujuan.split(',').map(Number) as [number, number];
+                const googleMapsUrl = `https://maps.google.com/maps?saddr=${titikAsal}&daddr=${titikTujuan}&output=embed`;
 
                 return (
-                  <Card className="overflow-hidden border-0 shadow-md h-[200px] relative z-0 p-0 -mx-4 sm:-mx-6">
-                    <MapContainer 
-                      center={origin} 
-                      zoom={5} 
-                      style={{ height: '100%', width: '100%' }}
-                      zoomControl={false}
-                    >
-                      <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      />
-                      <Marker position={origin}>
-                        <Popup>Asal: {parseJSONField(data.pengirim)?.alamat}</Popup>
-                      </Marker>
-                      <Marker position={destination}>
-                        <Popup>Tujuan: {parseJSONField(data.penerima)?.alamat}</Popup>
-                      </Marker>
-                      <Polyline 
-                        positions={[origin, destination]} 
-                        color="#e60012" 
-                        weight={3}
-                        dashArray="5, 10"
-                      />
-                      <MapBounds points={[origin, destination]} />
-                    </MapContainer>
-                    <div className="absolute  right-2 z-[1000] bg-white/90 backdrop-blur px-2 py-1 rounded text-[9px] font-bold text-jnt-red shadow-sm">
+                  <Card className="overflow-hidden border-0 shadow-md h-[250px] relative z-0 p-0 -mx-4 sm:-mx-6">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      style={{ border: 0 }}
+                      src={googleMapsUrl}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Tracking Map"
+                    />
+                    <div className="absolute top-2 right-2 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded text-[9px] font-bold text-jnt-red shadow-sm">
                       LIVE TRACKING
                     </div>
                   </Card>
@@ -505,7 +465,7 @@ export const TrackingPage = () => {
                           
                           <div className="flex items-center gap-2 px-1">
                             <Clock className="w-3 h-3 text-gray-400" />
-                            <span className="text-[9px] text-gray-500 font-bold italic">Estimasi pencairan: 30 menit setelah tagihan di verifikasi</span>
+                            <span className="text-[9px] text-gray-500 font-bold italic">Estimasi pencairan: 1-3 hari kerja setelah verifikasi</span>
                           </div>
                         </motion.div>
                       )}
